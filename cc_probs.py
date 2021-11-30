@@ -6,6 +6,8 @@ import re
 
 work_dir_path = "/home/ojas/coding/"
 cc_platforms = ["codechef","codeforces","cses"]
+move_file_of_extensions = [".cpp"]
+delete_file_of_extensions = [".exe"]
 
 alphabets = []
 for i in range(0,26):
@@ -68,8 +70,11 @@ class coding_platform:
 				problem_code = str(problem_element.find("a")).split("/")[2].split("\"")[0]
 				problem_name = name_str_uniform(problem_element.find("b").text.strip())
 
-				files_to_move.append(problem_name+".cpp")
-				files_to_del.append(problem_name+".exe")
+				for ext in move_file_of_extensions:
+					files_to_move.append(problem_name+ext)
+
+				for ext in delete_file_of_extensions:
+					files_to_del.append(problem_name+ext)
 
 			cc = files(files_to_move,files_to_del)
 			cc.move_to_dir(work_dir_path,work_dir_path+self.platform[0])
@@ -102,9 +107,11 @@ class coding_platform:
 				name = div+"_"+name_str_uniform(name.text.strip())
 
 
-				files_to_move.append(name+".cpp")
-				files_to_del.append(name+".exe")
-				# print(name)	
+				for ext in move_file_of_extensions:
+					files_to_move.append(problem_name+ext)
+					
+				for ext in delete_file_of_extensions:
+					files_to_del.append(problem_name+ext)
 
 
 			cc = files(files_to_move,files_to_del)
@@ -133,8 +140,11 @@ class coding_platform:
 
 			name = name_str_uniform(name.text.strip())
 
-			files_to_move.append(name+".cpp")
-			files_to_del.append(name+".exe")
+			for ext in move_file_of_extensions:
+				files_to_move.append(problem_name+ext)
+					
+			for ext in delete_file_of_extensions:
+				files_to_del.append(problem_name+ext)
 
 			# print(name)
 		
